@@ -33,7 +33,7 @@ function App() {
   const [opacity, setOpacity] = useState(0.3);
   const [hoverInfo, setHoverInfo] = useState({});
 
-  const [osmTile, setOsmTile] = useState(false);
+  const [osmTile, setOsmTile] = useState(true);
   const [showMap1735, setShowMap1735] = useState(true);
   const [showBuildings1735, setShowBuildings1735] = useState(true);
   const [showWalls1735, setShowWalls1735] = useState(true);
@@ -51,8 +51,6 @@ function App() {
       maxZoom: 19,
       tileSize: 256,
       visible: osmTile,
-
-      onHover: info => setHoverInfo(info),
 
       renderSubLayers: props => {
         const {
@@ -75,8 +73,6 @@ function App() {
       tileSize: 256,
       opacity: 1,
       visible: showMap1879,
-
-      onHover: info => {console.log(info); setHoverInfo(info)},
 
       renderSubLayers: props => {
         const {
@@ -118,7 +114,6 @@ function App() {
       bounds: [-77.0604469369999947, -12.069618921, -77.00139326, -12.025348549],
       image: LimaMap1735,
       visible: showMap1735,
-      onHover: info => setHoverInfo(info)
     }),
     new GeoJsonLayer({
       id: 'buildings1735',
@@ -133,7 +128,7 @@ function App() {
       // Interactive props
       pickable: true,
       autoHighlight: true,
-      onHover: info => {console.log(info); setHoverInfo(info)},
+      onHover: info => setHoverInfo(info),
     }),
     new GeoJsonLayer({
       id: 'walls1735',
@@ -148,10 +143,7 @@ function App() {
       // Interactive props
       pickable: true,
       autoHighlight: true,
-      onHover: info => {
-        console.log('gsfdjghdfijghsi');
-        setHoverInfo(info)
-      },
+      onHover: info => setHoverInfo(info),
     }),
   ];
 
